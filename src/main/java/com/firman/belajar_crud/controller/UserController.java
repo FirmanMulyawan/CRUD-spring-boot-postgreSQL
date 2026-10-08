@@ -1,5 +1,6 @@
 package com.firman.belajar_crud.controller;
 
+import jakarta.validation.Valid;
 import com.firman.belajar_crud.entity.User;
 import com.firman.belajar_crud.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +24,13 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public User createUser(@Valid @RequestBody User user) {
         return userService.createUser(user);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+    public User updateUser(@PathVariable Long id, @Valid @RequestBody User user) {
         return userService.updateUser(id, user);
-
     }
 
     @DeleteMapping("/{id}")
